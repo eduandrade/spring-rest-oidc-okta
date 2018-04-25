@@ -1,0 +1,24 @@
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: TRACE
+    org.springframework.boot.autoconfigure: WARN
+
+spring:
+ thymeleaf:
+   cache: false
+ security:
+   oauth2:
+     client:
+       registration:
+         okta:
+           client-id: id
+           client-secret: secret
+       provider:
+         okta:
+           authorization-uri: https://dev-516839.oktapreview.com/oauth2/default/v1/authorize
+           token-uri: https://dev-516839.oktapreview.com/oauth2/default/v1/token
+           user-info-uri: https://dev-516839.oktapreview.com/oauth2/default/v1/userinfo
+           jwk-set-uri: https://dev-516839.oktapreview.com/oauth2/default/v1/keys
