@@ -24,6 +24,9 @@ public class MainController {
 	
 	@Autowired
 	private OAuth2AuthorizedClientService authorizedClientService;
+	
+	@Autowired
+	private JwtValidator jwtValidator;
 
 	/*
 	 * @GetMapping("/") String home(Principal user) { return "Hello " +
@@ -44,7 +47,7 @@ public class MainController {
 		Map userAttributes = Collections.emptyMap();
 		String userInfoEndpointUri = authorizedClient.getClientRegistration().getProviderDetails().getUserInfoEndpoint()
 				.getUri();
-		if (!StringUtils.isEmpty(userInfoEndpointUri)) { // userInfoEndpointUri is optional for OIDC Clients
+		if (!StringUtils.isEmpty(userInfoEndpointUri) && jwtValidator.validate(authorizedClient.getAccessToken().getTokenValue())) { // userInfoEndpointUri is optional for OIDC Clients
 
 			ReactorClientHttpConnector connector = new ReactorClientHttpConnector(
 					options -> options.httpProxy(addressSpec -> {
