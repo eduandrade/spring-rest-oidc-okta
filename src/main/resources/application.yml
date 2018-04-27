@@ -5,6 +5,11 @@ logging:
     org.springframework.security: INFO
     org.springframework.security.oauth2: TRACE
     org.springframework.boot.autoconfigure: WARN
+    
+custom:
+  security:
+    okta:
+      issuer-uri: https://dev-516839.oktapreview.com/oauth2/default
 
 spring:
  thymeleaf:
